@@ -78,15 +78,15 @@ flutter:
   fonts:
     - family: Satoshi
       fonts:
-        - asset: assets/fonts/Sathoshi-Black.otf
+        - asset: assets/fonts/Satoshi-Black.otf
           weight: 900
-        - asset: assets/fonts/Sathoshi-Light.otf
+        - asset: assets/fonts/Satoshi-Light.otf
           weight: 300
-        - asset: assets/fonts/Sathoshi-Medium.ttf
+        - asset: assets/fonts/Satoshi-Medium.otf
           weight: 500
-        - asset: assets/fonts/Sathoshi-Regular.ttf
+        - asset: assets/fonts/Satoshi-Regular.otf
           weight: 400
-        - asset: assets/fonts/Sathoshi-Bold.ttf
+        - asset: assets/fonts/Satoshi-Bold.otf
           weight: 600
   #   - family: Trajan Pro
   #     fonts:
