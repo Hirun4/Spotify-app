@@ -3,7 +3,6 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:spotify_app/main.dart';
 import 'package:spotify_app/presentation/choose_mode/bloc/theme_cubit.dart';
 
 import '../../../common/widgets/button/basic_app_button.dart';
@@ -112,7 +111,8 @@ class chooseModePage extends StatelessWidget {
                                 height: 80,
                                 width: 80,
                                 decoration: BoxDecoration(
-                                    color: Color(0xff30393c).withOpacity(0.5),
+                                    color: const Color(0xff30393c)
+                                        .withOpacity(0.5),
                                     shape: BoxShape.circle),
                                 child: SvgPicture.asset(
                                   AppVectors.sun,
