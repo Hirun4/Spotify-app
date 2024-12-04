@@ -61,8 +61,22 @@ class chooseModePage extends StatelessWidget {
                           decoration: BoxDecoration(
                               color: Color(0xff30393c).withOpacity(0.5),
                               shape: BoxShape.circle),
-                          child: SvgPicture.asset(AppVectors.moon),
+                          child: SvgPicture.asset(
+                            AppVectors.moon,
+                            fit: BoxFit.none,
+                          ),
                         ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    Text(
+                      'Dark Mode',
+                      style: TextStyle(
+                        fontWeight: FontWeight.w500,
+                        fontSize: 17,
+                        color: AppColors.grey,
                       ),
                     ),
                     const SizedBox(
@@ -77,6 +91,10 @@ class chooseModePage extends StatelessWidget {
                           decoration: BoxDecoration(
                               color: Color(0xff30393c).withOpacity(0.5),
                               shape: BoxShape.circle),
+                          child: SvgPicture.asset(
+                            AppVectors.sun,
+                            fit: BoxFit.none,
+                          ),
                         ),
                       ),
                     ),
