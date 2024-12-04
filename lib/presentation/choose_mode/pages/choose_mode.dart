@@ -38,7 +38,7 @@ class chooseModePage extends StatelessWidget {
                 ),
                 const Spacer(),
                 const Text(
-                  'Listen to Your Favorite Tunes Anytime, Anywhere',
+                  'Choose Mode',
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
