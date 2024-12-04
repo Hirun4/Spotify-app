@@ -22,6 +22,12 @@ class GetStartedPage extends StatelessWidget {
                     image: AssetImage(
                       AppImages.introBG,
                     ))),
+          ),
+          Container(
+            color: Colors.black.withOpacity(0.15),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 40),
             child: Column(
               children: [
                 Align(
@@ -63,9 +69,6 @@ class GetStartedPage extends StatelessWidget {
               ],
             ),
           ),
-          Container(
-            color: Colors.black.withOpacity(0.15),
-          )
         ],
       ),
     );
