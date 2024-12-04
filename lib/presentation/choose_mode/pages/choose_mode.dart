@@ -132,7 +132,7 @@ class chooseModePage extends StatelessWidget {
                                 const chooseModePage()),
                       );
                     },
-                    title: 'Get Started')
+                    title: 'continue')
               ],
             ),
           ),
