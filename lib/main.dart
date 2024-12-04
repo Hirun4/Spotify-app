@@ -1,9 +1,18 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:hydrated_bloc/hydrated_bloc.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:spotify_app/core/configs/theme/app_theme.dart';
 import 'package:spotify_app/presentation/splash/pages/splash.dart';
 
-void main() {
-  runApp(const MyApp());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  HydratedBloc.storage = await HydratedStorage.build(
+    storageDirectory: kIsWeb
+        ? HydratedStorage.webStorageDirectory
+        : await getApplicationDocumentsDirectory(),
+  );
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -16,7 +25,6 @@ class MyApp extends StatelessWidget {
         //title: 'Flutter Demo',
         theme: AppTheme.lightTheme,
         debugShowCheckedModeBanner: false,
-        home: const SplashPage()
-    );
+        home: const SplashPage());
   }
 }
