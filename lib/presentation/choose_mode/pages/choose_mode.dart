@@ -47,16 +47,8 @@ class chooseModePage extends StatelessWidget {
                 const SizedBox(
                   height: 21,
                 ),
-                const Text(
-                  "Discover millions of songs, albums, and playlists across all genres. Whether you're relaxing, working out, or partying, we've got the perfect soundtrack for every moment.",
-                  style: TextStyle(
-                      fontWeight: FontWeight.w500,
-                      color: AppColors.grey,
-                      fontSize: 13),
-                  textAlign: TextAlign.center,
-                ),
                 const SizedBox(
-                  height: 20,
+                  height: 50,
                 ),
                 BasicAppButton(
                     onPressed: () {
