@@ -59,7 +59,7 @@ class chooseModePage extends StatelessWidget {
                           height: 80,
                           width: 80,
                           decoration: BoxDecoration(
-                              color: Colors.white, shape: BoxShape.circle),
+                              color: Color(0xff30393c).withOpacity(0.5),
                         ),
                       ),
                     ),
