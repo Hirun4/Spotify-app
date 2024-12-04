@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -45,16 +47,19 @@ class chooseModePage extends StatelessWidget {
                       fontSize: 18),
                 ),
                 const SizedBox(
-                  height: 21,
+                  height: 40,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Container(
-                      height: 80,
-                      width: 80,
-                      decoration: BoxDecoration(
-                          color: Colors.white, shape: BoxShape.circle),
+                    BackdropFilter(
+                      filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                      child: Container(
+                        height: 80,
+                        width: 80,
+                        decoration: BoxDecoration(
+                            color: Colors.white, shape: BoxShape.circle),
+                      ),
                     ),
                     SizedBox(
                       width: 40,
