@@ -61,6 +61,7 @@ class chooseModePage extends StatelessWidget {
                           decoration: BoxDecoration(
                               color: Color(0xff30393c).withOpacity(0.5),
                               shape: BoxShape.circle),
+                          child: SvgPicture.asset(AppVectors.moon),
                         ),
                       ),
                     ),
