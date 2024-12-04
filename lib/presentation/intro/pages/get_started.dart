@@ -36,7 +36,7 @@ class GetStartedPage extends StatelessWidget {
                 ),
                 const Spacer(),
                 const Text(
-                  'Enjoy Listening To Music',
+                  'Listen to Your Favorite Tunes Anytime, Anywhere',
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
@@ -46,7 +46,7 @@ class GetStartedPage extends StatelessWidget {
                   height: 21,
                 ),
                 const Text(
-                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                  "Discover millions of songs, albums, and playlists across all genres. Whether you're relaxing, working out, or partying, we've got the perfect soundtrack for every moment.",
                   style: TextStyle(
                       fontWeight: FontWeight.w500,
                       color: AppColors.grey,
