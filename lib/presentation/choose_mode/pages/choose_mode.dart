@@ -47,6 +47,14 @@ class chooseModePage extends StatelessWidget {
                 const SizedBox(
                   height: 21,
                 ),
+                Row(
+                  children: [
+                    Container(
+                      height: 50,
+                      width: 50,
+                    ),
+                  ],
+                ),
                 const SizedBox(
                   height: 50,
                 ),
