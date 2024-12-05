@@ -8,7 +8,7 @@ import 'package:spotify_app/core/configs/assets/app_vectors.dart';
 import 'package:spotify_app/core/configs/theme/app_colors.dart';
 
 class SignupOrSigninPage extends StatelessWidget {
-  const SignupOrSigninPage({super.key});
+  const SignupOrSigninPage ({super.key});
 
   @override
   Widget build(BuildContext context) {
