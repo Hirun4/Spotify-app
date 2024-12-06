@@ -51,7 +51,7 @@ class SignupOrSigninPage extends StatelessWidget {
                     style: TextStyle(
                         fontWeight: FontWeight.w700,
                         fontSize: 14,
-                        color: AppColors.grey),
+                        color: Color.fromARGB(255, 117, 116, 116)),
                     textAlign: TextAlign.center,
                   ),
                   const SizedBox(
