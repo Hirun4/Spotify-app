@@ -8,7 +8,7 @@ import 'package:spotify_app/core/configs/assets/app_vectors.dart';
 import 'package:spotify_app/core/configs/theme/app_colors.dart';
 
 class SignupOrSigninPage extends StatelessWidget {
-  const SignupOrSigninPage ({super.key});
+  const SignupOrSigninPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,94 +18,77 @@ class SignupOrSigninPage extends StatelessWidget {
           const BasicAppbar(),
           Align(
             alignment: Alignment.topRight,
-            child: SvgPicture.asset(
-              AppVectors.topPattern
-            ),
+            child: SvgPicture.asset(AppVectors.topPattern),
           ),
           Align(
             alignment: Alignment.bottomRight,
-            child: SvgPicture.asset(
-              AppVectors.bottomPattern
-            ),
+            child: SvgPicture.asset(AppVectors.bottomPattern),
           ),
           Align(
-            alignment: Alignment.bottomLeft,
-            child: Image.asset(
-              AppImages.authBG
-            )
-          ),
+              alignment: Alignment.bottomLeft,
+              child: Image.asset(AppImages.authBG)),
           Align(
             alignment: Alignment.center,
             child: Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 40
-              ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                SvgPicture.asset(
-                  AppVectors.logo
-                ),
-                const SizedBox(
-                  height: 55,
-                ),
-                const Text(
-                  'Enjoy Listening To Music',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 26
+              padding: const EdgeInsets.symmetric(horizontal: 40),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  SvgPicture.asset(AppVectors.logo),
+                  const SizedBox(
+                    height: 55,
                   ),
-                ),
-                const SizedBox(
-                  height: 21,
-                ),
-                const Text(
-                  'Spotify is a proprietary Swedish audio streaming and media services provider',
-                  style: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    fontSize: 13,
-                    color: AppColors.grey
+                  const Text(
+                    'Enjoy Listening To Music',
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 26),
                   ),
-                  textAlign: TextAlign.center,
-                ),
-                const SizedBox(
-                  height: 30,
-                ),
-
-                Row(
-                  children: [
-                    Expanded(
-                      flex: 1,
-                      child: BasicAppButton(
-                        onPressed: (){},
-                        title: 'Register'
+                  const SizedBox(
+                    height: 21,
+                  ),
+                  const Text(
+                    'Spotify is a proprietary Swedish audio streaming and media services provider',
+                    style: TextStyle(
+                        fontWeight: FontWeight.w700,
+                        fontSize: 14,
+                        color: Color.fromARGB(255, 117, 116, 116)),
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  Row(
+                    children: [
+                      Expanded(
+                        flex: 1,
+                        child:
+                            BasicAppButton(onPressed: () {}, title: 'Register'),
                       ),
-                    ),
-                    const SizedBox(width: 20,),
-                    Expanded(
-                      flex: 1,
-                      child: TextButton(
-                      onPressed: (){},
-                      child: Text(
-                        'Sign in',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16,
-                          color: context.isDarkMode ? Colors.white : Colors.black
-                        ),
+                      const SizedBox(
+                        width: 20,
+                      ),
+                      Expanded(
+                        flex: 1,
+                        child: TextButton(
+                            onPressed: () {},
+                            child: Text(
+                              'Sign in',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16,
+                                  color: context.isDarkMode
+                                      ? Colors.white
+                                      : Colors.black),
+                            )),
                       )
-                      
-                    ),
+                    ],
                   )
-                  ],
-                )
-              ],
+                ],
+              ),
             ),
-          ),
           ),
         ],
       ),
-    ); 
+    );
   }
 }
