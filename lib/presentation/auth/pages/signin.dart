@@ -27,10 +27,6 @@ class SigninPage extends StatelessWidget {
             const SizedBox(
               height: 50,
             ),
-            _fullNameField(context),
-            const SizedBox(
-              height: 20,
-            ),
             _emailField(context),
             const SizedBox(
               height: 20,
@@ -48,16 +44,9 @@ class SigninPage extends StatelessWidget {
 
   Widget _registerText() {
     return const Text(
-      'Register',
+      'Sign In',
       style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
       textAlign: TextAlign.center,
-    );
-  }
-
-  Widget _fullNameField(BuildContext context) {
-    return TextField(
-      decoration: const InputDecoration(hintText: 'Full Name')
-          .applyDefaults(Theme.of(context).inputDecorationTheme),
     );
   }
 
