@@ -19,96 +19,75 @@ class SignupPage extends StatelessWidget {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(
-          vertical: 50,
-          horizontal: 30
-        ),
+        padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 30),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             _registerText(),
-            const SizedBox(height: 50,),
+            const SizedBox(
+              height: 50,
+            ),
             _fullNameField(context),
-            const SizedBox(height: 20,),
+            const SizedBox(
+              height: 20,
+            ),
             _emailField(context),
-            const SizedBox(height: 20,),
+            const SizedBox(
+              height: 20,
+            ),
             _passwordField(context),
-            const SizedBox(height: 20,),
-            BasicAppButton(
-              onPressed: (){},
-              title: 'Create Account'
-            )
-        
+            const SizedBox(
+              height: 20,
+            ),
+            BasicAppButton(onPressed: () {}, title: 'Create Account')
           ],
         ),
       ),
     );
   }
 
-  Widget _registerText(){
+  Widget _registerText() {
     return const Text(
       'Register',
-      style: TextStyle(
-        fontWeight: FontWeight.bold,
-        fontSize: 25
-      ),
+      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
       textAlign: TextAlign.center,
     );
   }
 
   Widget _fullNameField(BuildContext context) {
     return TextField(
-      decoration: const InputDecoration(
-        hintText: 'Full Name'
-      ).applyDefaults(
-        Theme.of(context).inputDecorationTheme
-      ),
-    );  
-  }
-  Widget _emailField(BuildContext context) {
-    return TextField(
-      decoration: const InputDecoration(
-        hintText: 'Enter Email'
-      ).applyDefaults(
-        Theme.of(context).inputDecorationTheme
-      ),
-    );  
-  }
-   Widget _passwordField(BuildContext context) {
-    return TextField(
-      decoration: const InputDecoration(
-        hintText: 'Password'
-      ).applyDefaults(
-        Theme.of(context).inputDecorationTheme
-      ),
-    );  
+      decoration: const InputDecoration(hintText: 'Full Name')
+          .applyDefaults(Theme.of(context).inputDecorationTheme),
+    );
   }
 
-  Widget _siginText(BuildContext context){
+  Widget _emailField(BuildContext context) {
+    return TextField(
+      decoration: const InputDecoration(hintText: 'Enter Email')
+          .applyDefaults(Theme.of(context).inputDecorationTheme),
+    );
+  }
+
+  Widget _passwordField(BuildContext context) {
+    return TextField(
+      decoration: const InputDecoration(hintText: 'Password')
+          .applyDefaults(Theme.of(context).inputDecorationTheme),
+    );
+  }
+
+  Widget _siginText(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(
-        vertical: 30
-      ),
+      padding: const EdgeInsets.symmetric(vertical: 30),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const Text(
             'Do you have an account? ',
-            style: TextStyle(
-              fontWeight: FontWeight.w500,
-              fontSize: 14
-            ),
+            style: TextStyle(fontWeight: FontWeight.w500, fontSize: 14),
           ),
-          TextButton(
-            onPressed:(){}, 
-            child: const Text(
-              'Sign In'
-            )
-          )
+          TextButton(onPressed: () {}, child: const Text('Sign In'))
         ],
       ),
     );
   }
 }
-
-
