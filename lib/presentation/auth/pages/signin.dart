@@ -82,10 +82,10 @@ class SigninPage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const Text(
-            'Do you have an account? ',
+            'Not A Member? ',
             style: TextStyle(fontWeight: FontWeight.w500, fontSize: 14),
           ),
-          TextButton(onPressed: () {}, child: const Text('Sign In'))
+          TextButton(onPressed: () {}, child: const Text('Register Now'))
         ],
       ),
     );
