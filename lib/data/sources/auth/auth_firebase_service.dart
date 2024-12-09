@@ -8,7 +8,7 @@ abstract class AuthFirebaseService {
 
 class AuthFirebaseServiceImpl extends AuthFirebaseService {
   @override
-  Future<void> signin() {
+  Future<void> signin() async {
     // TODO: implement signin
     throw UnimplementedError();
   }
