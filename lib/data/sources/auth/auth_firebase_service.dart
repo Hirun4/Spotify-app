@@ -4,16 +4,10 @@ import 'package:spotify_app/data/models/auth/create_user_req.dart';
 
 abstract class AuthFirebaseService {
   Future<Either> signup(CreateUserReq createUserReq);
-  Future<void> signin(CreateUserReq createUserReq);
+  Future<Either> signin(CreateUserReq createUserReq);
 }
 
 class AuthFirebaseServiceImpl extends AuthFirebaseService {
-  @override
-  Future<void> signin() {
-    // TODO: implement signin
-    throw UnimplementedError();
-  }
-
   @override
   Future<Either> signup(CreateUserReq createUserReq) async {
     try {
@@ -32,5 +26,11 @@ class AuthFirebaseServiceImpl extends AuthFirebaseService {
 
       return Left(message);
     }
+  }
+
+  @override
+  Future<Either> signin(CreateUserReq createUserReq) {
+    // TODO: implement signin
+    throw UnimplementedError();
   }
 }
