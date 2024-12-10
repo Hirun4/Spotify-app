@@ -55,6 +55,9 @@ class SignupPage extends StatelessWidget {
                         email: _email.text.toString(),
                         password: _password.text.toString()),
                   );
+                  result.fold((l) {
+                    var snackbar = SnackBar(content: Text(l));
+                  }, (r) {});
                 },
                 title: 'Create Account')
           ],
