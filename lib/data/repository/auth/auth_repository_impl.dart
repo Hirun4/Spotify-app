@@ -7,8 +7,7 @@ import 'package:spotify_app/service_locator.dart';
 class AuthRepositoryImpl extends AuthRepository {
   @override
   Future<void> signin() {
-    // TODO: implement signin
-    throw UnimplementedError();
+    return await sl<AuthFirebaseService>().signin(Sign);
   }
 
   @override
