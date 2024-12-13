@@ -57,17 +57,20 @@ class SignupPage extends StatelessWidget {
                         password: _password.text.toString()),
                   );
                   result.fold((l) {
-                    var snackbar = SnackBar(content: Text(l),behavior: SnackBarBehavior.floating,);
+                    var snackbar = SnackBar(
+                      content: Text(l),
+                      behavior: SnackBarBehavior.floating,
+                    );
                     //ScaffoldMessenger.of(context).showSnackBar(snackBar);
                   }, (r) {
                     Navigator.pushAndRemoveUntil(
-                      context,
-                      MaterialPageRoute(builder: (BuildContext context) => const RootPage()),
-                      (route) => false
-                    );
-                  }
-                );
-              },
+                        context,
+                        MaterialPageRoute(
+                            builder: (BuildContext context) =>
+                                const RootPage()),
+                        (route) => false);
+                  });
+                },
                 title: 'Create Account')
           ],
         ),
@@ -122,7 +125,7 @@ class SignupPage extends StatelessWidget {
                 Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
-                        builder: (BuildContext context) => const SigninPage()));
+                        builder: (BuildContext context) => SigninPage()));
               },
               child: const Text('Sign In'))
         ],
