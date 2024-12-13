@@ -41,46 +41,50 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyDOhqFDnScFtjn5mOCVCTtHuj_Ybq4JaGk',
-    appId: '1:1032711100689:web:302bbf4c7f1284059054b0',
-    messagingSenderId: '1032711100689',
-    projectId: 'spotify011111',
-    authDomain: 'spotify011111.firebaseapp.com',
-    storageBucket: 'spotify011111.firebasestorage.app',
+    apiKey: 'AIzaSyB2e8BqPwV3wZJnEpotlgwfoHmNPVS32z4',
+    appId: '1:176667934485:web:5674b898a78a2f3008331c',
+    messagingSenderId: '176667934485',
+    projectId: 'gaming-94110',
+    authDomain: 'gaming-94110.firebaseapp.com',
+    storageBucket: 'gaming-94110.appspot.com',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyCoGTr-YzOmNBvaMkelXZ5Cv3vXq0_cBnU',
-    appId: '1:1032711100689:android:cc1b4e57e2d7f7d39054b0',
-    messagingSenderId: '1032711100689',
-    projectId: 'spotify011111',
-    storageBucket: 'spotify011111.firebasestorage.app',
+    apiKey: 'AIzaSyA0ldOkfxqrtsPPHsuoqSfvWqL3NYjp0rI',
+    appId: '1:176667934485:android:0540d04b16a322de08331c',
+    messagingSenderId: '176667934485',
+    projectId: 'gaming-94110',
+    storageBucket: 'gaming-94110.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyBiz4t3YI8tQh4WLUJU1smGEljV9kTLhUs',
-    appId: '1:1032711100689:ios:fa5b9a461d62951f9054b0',
-    messagingSenderId: '1032711100689',
-    projectId: 'spotify011111',
-    storageBucket: 'spotify011111.firebasestorage.app',
-    iosBundleId: 'com.example.spotifyApp',
+    apiKey: 'AIzaSyD6yozLRexp8A_CBS9KVl1d2YpT9hb3R7g',
+    appId: '1:176667934485:ios:58e02d913cb8972b08331c',
+    messagingSenderId: '176667934485',
+    projectId: 'gaming-94110',
+    storageBucket: 'gaming-94110.appspot.com',
+    iosClientId:
+        '176667934485-u4voo2dab0u618q5esmlf6b67dlnrik3.apps.googleusercontent.com',
+    iosBundleId: 'com.spotify000000123',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyBiz4t3YI8tQh4WLUJU1smGEljV9kTLhUs',
-    appId: '1:1032711100689:ios:fa5b9a461d62951f9054b0',
-    messagingSenderId: '1032711100689',
-    projectId: 'spotify011111',
-    storageBucket: 'spotify011111.firebasestorage.app',
+    apiKey: 'AIzaSyD6yozLRexp8A_CBS9KVl1d2YpT9hb3R7g',
+    appId: '1:176667934485:ios:58e02d913cb8972b08331c',
+    messagingSenderId: '176667934485',
+    projectId: 'gaming-94110',
+    storageBucket: 'gaming-94110.appspot.com',
+    iosClientId:
+        '176667934485-u4voo2dab0u618q5esmlf6b67dlnrik3.apps.googleusercontent.com',
     iosBundleId: 'com.example.spotifyApp',
   );
 
   static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyDOhqFDnScFtjn5mOCVCTtHuj_Ybq4JaGk',
-    appId: '1:1032711100689:web:c96b221cc5fdfa419054b0',
-    messagingSenderId: '1032711100689',
-    projectId: 'spotify011111',
-    authDomain: 'spotify011111.firebaseapp.com',
-    storageBucket: 'spotify011111.firebasestorage.app',
+    apiKey: 'AIzaSyAS_X8tUxWT9vUrbfJFK2XuMdbBI6NNugo',
+    appId: '1:176667934485:web:03bcb7c46d28f9ca08331c',
+    messagingSenderId: '176667934485',
+    projectId: 'gaming-94110',
+    authDomain: 'gaming-94110.firebaseapp.com',
+    storageBucket: 'gaming-94110.appspot.com',
   );
 }
