@@ -39,9 +39,9 @@ class AuthFirebaseServiceImpl extends AuthFirebaseService {
     } on FirebaseAuthException catch (e) {
       String message = '';
 
-      if (e.code == 'weak-password') {
+      if (e.code == 'invalid email') {
         message = 'The password provided is too weak';
-      } else if (e.code == 'email-already-in-use') {
+      } else if (e.code == 'invalid credentials') {
         message = 'án account already exist with that email';
       }
 
