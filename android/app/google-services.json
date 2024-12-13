@@ -1,26 +1,36 @@
 {
   "project_info": {
-    "project_number": "1032711100689",
-    "project_id": "spotify011111",
-    "storage_bucket": "spotify011111.firebasestorage.app"
+    "project_number": "176667934485",
+    "project_id": "gaming-94110",
+    "storage_bucket": "gaming-94110.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1032711100689:android:cc1b4e57e2d7f7d39054b0",
+        "mobilesdk_app_id": "1:176667934485:android:3d6370dea554bc7708331c",
         "android_client_info": {
-          "package_name": "com.example.spotify"
+          "package_name": "com.example.spotify_app"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "176667934485-o0o9de4n6pdgc2s8i0gqra9ijnbjqmos.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
-          "current_key": "AIzaSyCoGTr-YzOmNBvaMkelXZ5Cv3vXq0_cBnU"
+          "current_key": "AIzaSyA0ldOkfxqrtsPPHsuoqSfvWqL3NYjp0rI"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "176667934485-o0o9de4n6pdgc2s8i0gqra9ijnbjqmos.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
