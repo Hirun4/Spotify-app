@@ -26,49 +26,47 @@ class SigninPage extends StatelessWidget {
           width: 40,
         ),
       ),
-      body: Padding(
+      body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 30),
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              _registerText(),
-              const SizedBox(
-                height: 50,
-              ),
-              _emailField(context),
-              const SizedBox(
-                height: 20,
-              ),
-              _passwordField(context),
-              const SizedBox(
-                height: 20,
-              ),
-              BasicAppButton(
-                  onPressed: () async {
-                    var result = await sl<SigninUseCase>().call(
-                      params: SigninUserReq(
-                          email: _email.text.toString(),
-                          password: _password.text.toString()),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            _registerText(),
+            const SizedBox(
+              height: 50,
+            ),
+            _emailField(context),
+            const SizedBox(
+              height: 20,
+            ),
+            _passwordField(context),
+            const SizedBox(
+              height: 20,
+            ),
+            BasicAppButton(
+                onPressed: () async {
+                  var result = await sl<SigninUseCase>().call(
+                    params: SigninUserReq(
+                        email: _email.text.toString(),
+                        password: _password.text.toString()),
+                  );
+                  result.fold((l) {
+                    var snackbar = SnackBar(
+                      content: Text(l),
+                      behavior: SnackBarBehavior.floating,
                     );
-                    result.fold((l) {
-                      var snackbar = SnackBar(
-                        content: Text(l),
-                        behavior: SnackBarBehavior.floating,
-                      );
-                      //ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                    }, (r) {
-                      Navigator.pushAndRemoveUntil(
-                          context,
-                          MaterialPageRoute(
-                              builder: (BuildContext context) =>
-                                  const RootPage()),
-                          (route) => false);
-                    });
-                  },
-                  title: 'Sign In')
-            ],
-          ),
+                    //ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                  }, (r) {
+                    Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(
+                            builder: (BuildContext context) =>
+                                const RootPage()),
+                        (route) => false);
+                  });
+                },
+                title: 'Sign In')
+          ],
         ),
       ),
     );
