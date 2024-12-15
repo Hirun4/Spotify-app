@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:spotify_app/data/models/auth/create_user_req.dart';
 import 'package:spotify_app/data/models/auth/signin_user_req.dart';
 
@@ -32,8 +33,15 @@ class AuthFirebaseServiceImpl extends AuthFirebaseService {
   @override
   Future<Either> signin(SigninUserReq signinUserReq) async {
     try {
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
+      var data = await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: signinUserReq.email, password: signinUserReq.password);
+
+          // FirebaseFirestore.instance.collection('Users').add(
+          //   {
+          //     'name' : data.user?.displayName,
+          //     'email' : data.user?.email
+          //   }
+          // );
 
       return const Right('Sigin was successful ');
     } on FirebaseAuthException catch (e) {
