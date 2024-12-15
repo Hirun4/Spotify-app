@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -13,8 +14,12 @@ class AuthFirebaseServiceImpl extends AuthFirebaseService {
   @override
   Future<Either> signup(CreateUserReq createUserReq) async {
     try {
-      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      var data = await FirebaseAuth.instance.createUserWithEmailAndPassword(
           email: createUserReq.email, password: createUserReq.password);
+
+      FirebaseFirestore.instance
+          .collection('Users')
+          .add({'name': data.user?.displayName, 'email': data.user?.email});
 
       return const Right('Signup was successful ');
     } on FirebaseAuthException catch (e) {
@@ -33,15 +38,8 @@ class AuthFirebaseServiceImpl extends AuthFirebaseService {
   @override
   Future<Either> signin(SigninUserReq signinUserReq) async {
     try {
-      var data = await FirebaseAuth.instance.signInWithEmailAndPassword(
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: signinUserReq.email, password: signinUserReq.password);
-
-          // FirebaseFirestore.instance.collection('Users').add(
-          //   {
-          //     'name' : data.user?.displayName,
-          //     'email' : data.user?.email
-          //   }
-          // );
 
       return const Right('Sigin was successful ');
     } on FirebaseAuthException catch (e) {
