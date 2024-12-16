@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:spotify_app/common/helpers/is_dark_mode.dart';
 import 'package:spotify_app/core/configs/assets/app_images.dart';
 
 import '../../../common/widgets/appbar/app_bar.dart';
@@ -67,6 +68,8 @@ class _HomePageState extends State<HomePage>
 
   Widget _tabs() {
     return TabBar(
+      controller: _tabController,
+      labelColor: context.isDarkMode ? Colors.white : Colors.black,
       tabs: [
         Text('News'),
         Text('Videos'),
