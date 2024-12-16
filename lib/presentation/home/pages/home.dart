@@ -75,10 +75,34 @@ class _HomePageState extends State<HomePage>
       indicatorColor: AppColors.primary,
       padding: EdgeInsets.symmetric(vertical: 40, horizontal: 16),
       tabs: [
-        Text('News'),
-        Text('Videos'),
-        Text('Artists'),
-        Text('Podcasts'),
+        Text(
+          'News',
+          style: TextStyle(
+            fontWeight: FontWeight.w500,
+            fontSize: 16,
+          ),
+        ),
+        Text(
+          'Videos',
+          style: TextStyle(
+            fontWeight: FontWeight.w500,
+            fontSize: 16,
+          ),
+        ),
+        Text(
+          'Artists',
+          style: TextStyle(
+            fontWeight: FontWeight.w500,
+            fontSize: 16,
+          ),
+        ),
+        Text(
+          'Podcasts',
+          style: TextStyle(
+            fontWeight: FontWeight.w500,
+            fontSize: 16,
+          ),
+        ),
       ],
     );
   }
