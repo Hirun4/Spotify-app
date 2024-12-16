@@ -12,4 +12,6 @@ class SongModel {
     required this.duration,
     required this.releaseDate,
   });
+
+  SongModel.fromJson(Map<String, dynamic> data) {}
 }
