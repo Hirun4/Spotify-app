@@ -40,7 +40,10 @@ class HomePage extends StatelessWidget {
             ),
             Align(
               alignment: Alignment.bottomRight,
-              child: Image.asset(AppImages.homeArtist),
+              child: Padding(
+                padding: const EdgeInsets.only(right: 60),
+                child: Image.asset(AppImages.homeArtist),
+              ),
             ),
           ],
         ),
