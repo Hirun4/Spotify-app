@@ -50,4 +50,10 @@ class HomePage extends StatelessWidget {
       ),
     );
   }
+
+  Widget _tabs() {
+    return TabBar(tabs: [
+      
+    ])
+  }
 }
