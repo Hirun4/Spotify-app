@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:spotify_app/common/helpers/is_dark_mode.dart';
 import 'package:spotify_app/core/configs/assets/app_images.dart';
+import 'package:spotify_app/core/configs/theme/app_colors.dart';
 
 import '../../../common/widgets/appbar/app_bar.dart';
 import '../../../core/configs/assets/app_vectors.dart';
@@ -71,6 +72,7 @@ class _HomePageState extends State<HomePage>
       controller: _tabController,
       isScrollable: true,
       labelColor: context.isDarkMode ? Colors.white : Colors.black,
+      indicatorColor: AppColors.primary,
       padding: EdgeInsets.symmetric(vertical: 40, horizontal: 16),
       tabs: [
         Text('News'),
