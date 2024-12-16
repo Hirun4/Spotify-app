@@ -69,7 +69,9 @@ class _HomePageState extends State<HomePage>
   Widget _tabs() {
     return TabBar(
       controller: _tabController,
+      isScrollable: true,
       labelColor: context.isDarkMode ? Colors.white : Colors.black,
+      padding: EdgeInsets.symmetric(vertical: 40, horizontal: 16),
       tabs: [
         Text('News'),
         Text('Videos'),
