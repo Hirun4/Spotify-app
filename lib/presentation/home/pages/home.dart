@@ -22,7 +22,7 @@ class HomePage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [_homeTopCard()],
+          children: [_homeTopCard(), _tabs()],
         ),
       ),
     );
@@ -52,8 +52,13 @@ class HomePage extends StatelessWidget {
   }
 
   Widget _tabs() {
-    return TabBar(tabs: [
-      
-    ])
+    return TabBar(
+      tabs: [
+        Text('News'),
+        Text('Videos'),
+        Text('Artists'),
+        Text('Podcasts'),
+      ],
+    );
   }
 }
