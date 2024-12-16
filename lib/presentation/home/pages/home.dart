@@ -11,12 +11,20 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: BasicAppbar(
+        hideBack: true,
         title: SvgPicture.asset(
           AppVectors.logo,
           height: 40,
           width: 40,
         ),
       ),
+    );
+  }
+
+  Widget _homeArtistCard() {
+    return Container(
+      height: 188,
+      child: SvgPicture.asset(),
     );
   }
 }
