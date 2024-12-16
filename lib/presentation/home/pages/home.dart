@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:spotify_app/core/configs/assets/app_images.dart';
 
 import '../../../common/widgets/appbar/app_bar.dart';
 import '../../../core/configs/assets/app_vectors.dart';
@@ -33,7 +34,11 @@ class HomePage extends StatelessWidget {
         height: 188,
         child: Stack(
           children: [
-            SvgPicture.asset(AppVectors.homeTopCard),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: SvgPicture.asset(AppVectors.homeTopCard),
+            ),
+            Image.asset(AppImages.homeArtist),
           ],
         ),
       ),
