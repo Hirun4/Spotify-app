@@ -30,15 +30,18 @@ class HomePage extends StatelessWidget {
 
   Widget _homeTopCard() {
     return Center(
-      child: Container(
-        height: 188,
+      child: SizedBox(
+        height: 140,
         child: Stack(
           children: [
             Align(
               alignment: Alignment.bottomCenter,
               child: SvgPicture.asset(AppVectors.homeTopCard),
             ),
-            Image.asset(AppImages.homeArtist),
+            Align(
+              alignment: Alignment.bottomRight,
+              child: Image.asset(AppImages.homeArtist),
+            ),
           ],
         ),
       ),
