@@ -18,13 +18,25 @@ class HomePage extends StatelessWidget {
           width: 40,
         ),
       ),
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [_homeTopCard()],
+        ),
+      ),
     );
   }
 
-  Widget _homeArtistCard() {
-    return Container(
-      height: 188,
-      child: SvgPicture.asset(),
+  Widget _homeTopCard() {
+    return Center(
+      child: Container(
+        height: 188,
+        child: Stack(
+          children: [
+            SvgPicture.asset(AppVectors.homeTopCard),
+          ],
+        ),
+      ),
     );
   }
 }
