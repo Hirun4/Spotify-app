@@ -15,5 +15,9 @@ class SongFirebaseImpl extends SongFirebaseService {
         .orderBy('releaseDate', descending: true)
         .limit(3)
         .get();
+
+    for (var element in data.docs) {
+      element.data();
+    }
   }
 }
