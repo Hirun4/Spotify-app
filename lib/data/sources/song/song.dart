@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
+import 'package:spotify_app/data/models/song/song.dart';
 import 'package:spotify_app/domain/entities/song/song.dart';
 
 abstract class SongFirebaseService {
@@ -17,7 +18,7 @@ class SongFirebaseImpl extends SongFirebaseService {
         .get();
 
     for (var element in data.docs) {
-      element.data();
+      var songModel = SongModel.fromJson(element.data());
     }
   }
 }
