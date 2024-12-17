@@ -19,6 +19,7 @@ class SongFirebaseImpl extends SongFirebaseService {
 
     for (var element in data.docs) {
       var songModel = SongModel.fromJson(element.data());
+      songs.add(songModel.toEntity());
     }
   }
 }
