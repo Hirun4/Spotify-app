@@ -12,7 +12,7 @@ class NewsSongs extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => NewsSongsCubit(),
+      create: (_) => NewsSongsCubit()..getNewsSongs(),
       child: SizedBox(
           height: 200,
           child: BlocBuilder<NewsSongsCubit, NewsSongsState>(
