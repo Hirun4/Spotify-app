@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:spotify_app/domain/entities/song/song.dart';
 import 'package:spotify_app/presentation/home/bloc/news_songs_cubit.dart';
 
 import '../bloc/news_songs_state.dart';
@@ -15,12 +16,12 @@ class NewsSongs extends StatelessWidget {
       child: SizedBox(
           height: 200,
           child: BlocBuilder<NewsSongsCubit, NewsSongsState>(
-            builder: (context, State) {
-              if (State is NewsSongsLoading) {
+            builder: (context, state) {
+              if (state is NewsSongsLoading) {
                 return CircularProgressIndicator();
               }
-              if (State is NewsSongsLoaded) {
-                return _songs();
+              if (state is NewsSongsLoaded) {
+                return _songs(state.songs);
               }
               return Container();
             },
@@ -28,10 +29,15 @@ class NewsSongs extends StatelessWidget {
     );
   }
 
-  Widget _songs() {
+  Widget _songs(List<SongEntity> songs) {
     return ListView.separated(
-        itemBuilder: itemBuilder,
-        separatorBuilder: separatorBuilder,
-        itemCount: itemCount);
+        scrollDirection: Axis.horizontal,
+        itemBuilder: (context, index) {
+          return Column();
+        },
+        separatorBuilder: (context, index) => SizedBox(
+              width: 14,
+            ),
+        itemCount: songs.length);
   }
 }
