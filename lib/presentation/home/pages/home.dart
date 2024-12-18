@@ -42,14 +42,17 @@ class _HomePageState extends State<HomePage>
           children: [
             _homeTopCard(),
             _tabs(),
-            TabBarView(
-              children: [
-                NewsSongs(),
-                Container(),
-                Container(),
-                Container(),
-              ],
-              controller: _tabController,
+            SizedBox(
+              height: 260,
+              child: TabBarView(
+                children: [
+                  NewsSongs(),
+                  Container(),
+                  Container(),
+                  Container(),
+                ],
+                controller: _tabController,
+              ),
             ),
           ],
         ),
