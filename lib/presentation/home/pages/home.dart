@@ -45,6 +45,9 @@ class _HomePageState extends State<HomePage>
             TabBarView(
               children: [
                 NewsSongs(),
+                Container(),
+                Container(),
+                Container(),
               ],
               controller: _tabController,
             ),
