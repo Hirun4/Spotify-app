@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:spotify_app/common/helpers/is_dark_mode.dart';
 import 'package:spotify_app/core/configs/assets/app_images.dart';
 import 'package:spotify_app/core/configs/theme/app_colors.dart';
+import 'package:spotify_app/presentation/home/widgets/news_songs.dart';
 
 import '../../../common/widgets/appbar/app_bar.dart';
 import '../../../core/configs/assets/app_vectors.dart';
@@ -38,7 +39,16 @@ class _HomePageState extends State<HomePage>
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [_homeTopCard(), _tabs()],
+          children: [
+            _homeTopCard(),
+            _tabs(),
+            TabBarView(
+              children: [
+                NewsSongs(),
+              ],
+              controller: _tabController,
+            ),
+          ],
         ),
       ),
     );
