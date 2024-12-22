@@ -4,6 +4,7 @@ import 'package:spotify_app/common/helpers/is_dark_mode.dart';
 import 'package:spotify_app/core/configs/assets/app_images.dart';
 import 'package:spotify_app/core/configs/theme/app_colors.dart';
 import 'package:spotify_app/presentation/home/widgets/news_songs.dart';
+import 'package:spotify_app/presentation/home/widgets/play_list.dart';
 
 import '../../../common/widgets/appbar/app_bar.dart';
 import '../../../core/configs/assets/app_vectors.dart';
@@ -45,15 +46,16 @@ class _HomePageState extends State<HomePage>
             SizedBox(
               height: 260,
               child: TabBarView(
-                children: [
-                  NewsSongs(),
-                  Container(),
-                  Container(),
-                  Container(),
-                ],
                 controller: _tabController,
+                children: [
+                  const  NewsSongs(),
+                  Container(),
+                  Container(),
+                  Container()
+                ],
               ),
             ),
+            const PlayList()
           ],
         ),
       ),
