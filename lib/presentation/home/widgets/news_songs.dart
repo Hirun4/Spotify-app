@@ -15,20 +15,31 @@ class NewsSongs extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => NewsSongsCubit()..getNewsSongs(),
+      create: (_) {
+        debugPrint("Creating NewsSongsCubit...");
+        final cubit = NewsSongsCubit();
+        cubit.getNewsSongs();
+        debugPrint("Called getNewsSongs on NewsSongsCubit.");
+        return cubit;
+      },
       child: SizedBox(
           height: 200,
           child: BlocBuilder<NewsSongsCubit, NewsSongsState>(
             builder: (context, state) {
-              if (state is PlayListLoading) {
+              debugPrint("BlocBuilder state: $state");
+              if (state is NewsSongsLoading) {
+                debugPrint("State is NewsSongsLoading");
                 return Container(
                     alignment: Alignment.center,
                     child: CircularProgressIndicator());
-              }
-              if (state is NewsSongsLoaded) {
+              } else if (state is NewsSongsLoaded) {
+                debugPrint(
+                    "State is NewsSongsLoaded with ${state.songs.length} songs");
                 return _songs(state.songs);
+              } else {
+                debugPrint("State is unhandled: $state");
+                return Container();
               }
-              return Container();
             },
           )),
     );
@@ -47,14 +58,11 @@ class NewsSongs extends StatelessWidget {
                 Expanded(
                   child: Container(
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(30),
-                      image: DecorationImage(
-                        fit: BoxFit.cover,
-                        image: NetworkImage(
-                          '${AppURLs.firestorage}${songs[index].artist} - ${songs[index].title}.jpg?${AppURLs.mediaAlt}'
-                        )
-                      )
-                    ),
+                        borderRadius: BorderRadius.circular(30),
+                        image: DecorationImage(
+                            fit: BoxFit.cover,
+                            image: NetworkImage(
+                                '${AppURLs.firestorage}${songs[index].artist} - ${songs[index].title}.jpg?${AppURLs.mediaAlt}'))),
                     child: Align(
                       alignment: Alignment.bottomRight,
                       child: Container(
@@ -62,32 +70,35 @@ class NewsSongs extends StatelessWidget {
                         width: 40,
                         transform: Matrix4.translationValues(10, 10, 0),
                         decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: context.isDarkMode ? AppColors.darkGrey : const Color(0xffE6E6E6)
-                        ),
+                            shape: BoxShape.circle,
+                            color: context.isDarkMode
+                                ? AppColors.darkGrey
+                                : const Color(0xffE6E6E6)),
                         child: Icon(
                           Icons.play_arrow_rounded,
-                          color: context.isDarkMode ? const Color(0xff959595) : const Color(0xff555555),
-                          ),
+                          color: context.isDarkMode
+                              ? const Color(0xff959595)
+                              : const Color(0xff555555),
+                        ),
                       ),
                     ),
                   ),
                 ),
-                const SizedBox(height: 10,),
+                const SizedBox(
+                  height: 10,
+                ),
                 Text(
                   songs[index].title,
                   style: const TextStyle(
-                    fontWeight: FontWeight.w600,
-                    fontSize: 16
-                  ),
+                      fontWeight: FontWeight.w600, fontSize: 16),
                 ),
-                const SizedBox(height: 5,),
+                const SizedBox(
+                  height: 5,
+                ),
                 Text(
                   songs[index].artist,
                   style: const TextStyle(
-                    fontWeight: FontWeight.w400,
-                    fontSize: 12
-                  ),
+                      fontWeight: FontWeight.w400, fontSize: 12),
                 )
               ],
             ),
@@ -99,4 +110,3 @@ class NewsSongs extends StatelessWidget {
         itemCount: songs.length);
   }
 }
-
