@@ -15,20 +15,31 @@ class NewsSongs extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => NewsSongsCubit()..getNewsSongs(),
+      create: (_) {
+        debugPrint("Creating NewsSongsCubit...");
+        final cubit = NewsSongsCubit();
+        cubit.getNewsSongs();
+        debugPrint("Called getNewsSongs on NewsSongsCubit.");
+        return cubit;
+      },
       child: SizedBox(
           height: 200,
           child: BlocBuilder<NewsSongsCubit, NewsSongsState>(
             builder: (context, state) {
+              debugPrint("BlocBuilder state: $state");
               if (state is NewsSongsLoading) {
+                debugPrint("State is NewsSongsLoading");
                 return Container(
                     alignment: Alignment.center,
                     child: CircularProgressIndicator());
-              }
-              if (state is NewsSongsLoaded) {
+              } else if (state is NewsSongsLoaded) {
+                debugPrint(
+                    "State is NewsSongsLoaded with ${state.songs.length} songs");
                 return _songs(state.songs);
+              } else {
+                debugPrint("State is unhandled: $state");
+                return Container();
               }
-              return Container();
             },
           )),
     );
