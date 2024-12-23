@@ -2,11 +2,14 @@ import 'package:spotify_app/domain/entities/song/song.dart';
 
 abstract class NewsSongsState {}
 
-class PlayListLoading extends NewsSongsState {}
+class NewsSongsLoading extends NewsSongsState {}
 
 class NewsSongsLoaded extends NewsSongsState {
   final List<SongEntity> songs;
   NewsSongsLoaded({required this.songs});
 }
 
-class NewsSongsLoadFailure extends NewsSongsState {}
+class NewsSongsLoadFailure extends NewsSongsState {
+  final String message;
+  NewsSongsLoadFailure({this.message = "An error occurred."});
+}

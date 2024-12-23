@@ -24,13 +24,7 @@ Future<void> initializeDependencies() async {
 
   sl.registerSingleton<SigninUseCase>(SigninUseCase());
 
-  sl.registerSingleton<GetNewsSongsUsecase>(GetNewsSongsUsecase());
+  sl.registerSingleton<GetNewsSongsUseCase>(GetNewsSongsUseCase());
 
-  sl.registerSingleton<GetPlayListUseCase>(
-    GetPlayListUseCase()
-    );
-
+  sl.registerSingleton<GetPlayListUseCase>(GetPlayListUseCase());
 }
-
-
-
