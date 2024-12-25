@@ -15,4 +15,13 @@ class SongPlayerCubit extends Cubit<SongPlayerState> {
       emit(SongPlayerFailure());
     }
   }
+
+  void playOrPauseSong() {
+    if (audioPlayer.playing) {
+      audioPlayer.stop();
+    } else {
+      audioPlayer.play();
+    }
+    emit(SongPlayerLoaded());
+  }
 }
