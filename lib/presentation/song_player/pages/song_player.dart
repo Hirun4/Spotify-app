@@ -23,9 +23,9 @@ class SongPlayerPage extends StatelessWidget {
             onPressed: () {}, icon: const Icon(Icons.more_vert_rounded)),
       ),
       body: BlocProvider(
-        create: (_) => SongPlayerCubit().loadSong(
-          '${AppURLs.coverFirestorage}${songEntity.artist} - ${songEntity.title}.jpg?${AppURLs.mediaAlt}'),
-        ),
+        create: (_) => SongPlayerCubit()
+          ..loadSong(
+              '${AppURLs.songFirestorage}${songEntity.artist} - ${songEntity.title}.mp3?${AppURLs.mediaAlt}'),
         child: SingleChildScrollView(
           padding: EdgeInsets.symmetric(vertical: 16, horizontal: 16),
           child: Column(
