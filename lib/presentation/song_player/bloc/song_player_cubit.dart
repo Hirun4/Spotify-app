@@ -6,4 +6,13 @@ class SongPlayerCubit extends Cubit<SongPlayerState> {
   SongPlayerCubit() : super(SongPlayerLoading());
 
   AudioPlayer audioPlayer = AudioPlayer();
+
+  Future<void> loadSong(String url) async {
+    try {
+      await audioPlayer.setUrl(url);
+      emit(SongPlayerLoaded());
+    } catch (e) {
+      emit(SongPlayerFailure());
+    }
+  }
 }
