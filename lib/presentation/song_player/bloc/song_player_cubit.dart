@@ -3,12 +3,18 @@ import 'package:just_audio/just_audio.dart';
 import 'package:spotify_app/presentation/song_player/bloc/song_player_state.dart';
 
 class SongPlayerCubit extends Cubit<SongPlayerState> {
-  SongPlayerCubit() : super(SongPlayerLoading());
-
   AudioPlayer audioPlayer = AudioPlayer();
 
   Duration songDuration = Duration.zero;
   Duration songPosition = Duration.zero;
+
+  SongPlayerCubit() : super(SongPlayerLoading()) {
+    audioPlayer.positionStream.listen((position) {});
+
+    audioPlayer.durationStream.listen((duration) {
+      songDuration = duration!;
+    });
+  }
 
   Future<void> loadSong(String url) async {
     try {
