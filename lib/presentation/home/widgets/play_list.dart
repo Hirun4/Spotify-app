@@ -5,7 +5,7 @@ import 'package:spotify_app/core/configs/theme/app_colors.dart';
 import 'package:spotify_app/domain/entities/song/song.dart';
 import 'package:spotify_app/presentation/home/bloc/play_list_cubit.dart';
 
-import '../../song_player/pages/bloc/song_player.dart';
+import '../../song_player/pages/song_player.dart';
 import '../bloc/play_list_state.dart';
 
 class PlayList extends StatelessWidget {
@@ -66,15 +66,12 @@ class PlayList extends StatelessWidget {
         itemBuilder: (context, index) {
           return GestureDetector(
             onTap: () {
-             Navigator.push(
-                context, 
-                MaterialPageRoute(
-                  builder: (BuildContext context) 
-                => SongPlayerPage(
-                  songEntity: songs[index],
-                )
-              )
-              );
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (BuildContext context) => SongPlayerPage(
+                            songEntity: songs[index],
+                          )));
             },
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -131,8 +128,7 @@ class PlayList extends StatelessWidget {
                           Icons.favorite_outline_outlined,
                           size: 25,
                           color: AppColors.darkGrey,
-                        )
-                      )
+                        ))
                   ],
                 )
               ],
