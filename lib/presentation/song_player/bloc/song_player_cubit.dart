@@ -7,6 +7,9 @@ class SongPlayerCubit extends Cubit<SongPlayerState> {
 
   AudioPlayer audioPlayer = AudioPlayer();
 
+  Duration songDuration = Duration.zero;
+  Duration songPosition = Duration.zero;
+
   Future<void> loadSong(String url) async {
     try {
       await audioPlayer.setUrl(url);
