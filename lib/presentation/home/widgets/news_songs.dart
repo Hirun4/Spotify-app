@@ -6,7 +6,7 @@ import 'package:spotify_app/core/configs/constants/app_urls.dart';
 import 'package:spotify_app/core/configs/theme/app_colors.dart';
 import 'package:spotify_app/domain/entities/song/song.dart';
 import 'package:spotify_app/presentation/home/bloc/news_songs_cubit.dart';
-import 'package:spotify_app/presentation/song_player/pages/bloc/song_player.dart';
+import 'package:spotify_app/presentation/song_player/pages/song_player.dart';
 
 import '../bloc/news_songs_state.dart';
 
@@ -54,14 +54,11 @@ class NewsSongs extends StatelessWidget {
           return GestureDetector(
             onTap: () {
               Navigator.push(
-                context, 
-                MaterialPageRoute(
-                  builder: (BuildContext context) 
-                => SongPlayerPage(
-                  songEntity: songs[index],
-                )
-              )
-              );
+                  context,
+                  MaterialPageRoute(
+                      builder: (BuildContext context) => SongPlayerPage(
+                            songEntity: songs[index],
+                          )));
             },
             child: SizedBox(
               width: 160,
@@ -75,7 +72,7 @@ class NewsSongs extends StatelessWidget {
                           image: DecorationImage(
                               fit: BoxFit.cover,
                               image: NetworkImage(
-                                  '${AppURLs.firestorage}${songs[index].artist} - ${songs[index].title}.jpg?${AppURLs.mediaAlt}'))),
+                                  '${AppURLs.coverFirestorage}${songs[index].artist} - ${songs[index].title}.jpg?${AppURLs.mediaAlt}'))),
                       child: Align(
                         alignment: Alignment.bottomRight,
                         child: Container(
