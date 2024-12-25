@@ -9,11 +9,18 @@ class SongPlayerCubit extends Cubit<SongPlayerState> {
   Duration songPosition = Duration.zero;
 
   SongPlayerCubit() : super(SongPlayerLoading()) {
-    audioPlayer.positionStream.listen((position) {});
+    audioPlayer.positionStream.listen((position) {
+      songPosition = position;
+      updateSongPlayer();
+    });
 
     audioPlayer.durationStream.listen((duration) {
       songDuration = duration!;
     });
+  }
+
+  void updateSongPlayer() {
+    emit(SongPlayerLoaded());
   }
 
   Future<void> loadSong(String url) async {
