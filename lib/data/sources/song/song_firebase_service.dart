@@ -7,7 +7,7 @@ import 'package:spotify_app/domain/entities/song/song.dart';
 abstract class SongFirebaseService {
   Future<Either> getNewsSongs();
   Future<Either> getPlayList();
-  Future<Either> addOrRemoveFavoriteSongs();
+  Future<Either> addOrRemoveFavoriteSongs(String songId);
 }
 
 class SongFirebaseServiceImpl extends SongFirebaseService {
@@ -55,8 +55,18 @@ class SongFirebaseServiceImpl extends SongFirebaseService {
   }
 
   @override
-  Future<Either> addOrRemoveFavoriteSongs() {
+  Future<Either> addOrRemoveFavoriteSongs(String songId) {
     final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
     final FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+
+    var user = firebaseAuth.currentUser;
+    String uId = user!.uid;
+
+    firebaseFirestore
+        .collection('Users')
+        .doc(uId)
+        .collection('Favorites')
+        .where('songId', isEqualTo: songId)
+        .get();
   }
 }

@@ -16,7 +16,7 @@ class SongRepositoryImpl extends SongsRepository {
   }
 
   @override
-  Future<Either> addOrRemoveFavoriteSongs() {
+  Future<Either> addOrRemoveFavoriteSongs(String songId) {
     // TODO: implement addOrRemoveFavoriteSongs
     throw UnimplementedError();
   }
