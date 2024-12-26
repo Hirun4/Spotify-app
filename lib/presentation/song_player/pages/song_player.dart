@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spotify_app/common/widgets/appbar/app_bar.dart';
 import 'package:spotify_app/domain/entities/song/song.dart';
 import 'package:spotify_app/presentation/song_player/bloc/song_player_cubit.dart';
+import 'package:spotify_app/presentation/song_player/bloc/song_player_state.dart';
 
 import '../../../core/configs/constants/app_urls.dart';
 import '../../../core/configs/theme/app_colors.dart';
@@ -34,7 +35,11 @@ class SongPlayerPage extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              _songDetail()
+              _songDetail(),
+              SizedBox(
+                height: 20,
+              ),
+              _songPlayer(context),
             ],
           ),
         ),
@@ -85,5 +90,72 @@ class SongPlayerPage extends StatelessWidget {
             ))
       ],
     );
+  }
+
+  Widget _songPlayer(BuildContext context) {
+    return BlocBuilder<SongPlayerCubit, SongPlayerState>(
+      builder: (context, state) {
+        if (state is SongPlayerLoading) {
+          return CircularProgressIndicator();
+        }
+        if (state is SongPlayerLoaded) {
+          return Column(
+            children: [
+              Slider(
+                value: context
+                    .read<SongPlayerCubit>()
+                    .songPosition
+                    .inSeconds
+                    .toDouble(),
+                min: 0.0,
+                max: context
+                    .read<SongPlayerCubit>()
+                    .songDuration
+                    .inSeconds
+                    .toDouble(),
+                onChanged: (value) {},
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(formatDuration(
+                      context.read<SongPlayerCubit>().songDuration))
+                ],
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              GestureDetector(
+                onTap: () {
+                  context.read<SongPlayerCubit>().playOrPauseSong();
+                },
+                child: Container(
+                  height: 60,
+                  width: 60,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: AppColors.primary,
+                  ),
+                  child: Icon(
+                      context.read<SongPlayerCubit>().audioPlayer.playing
+                          ? Icons.pause
+                          : Icons.play_arrow),
+                ),
+              )
+            ],
+          );
+        }
+        return Container();
+      },
+    );
+  }
+
+  String formatDuration(Duration duration) {
+    final minutes = duration.inMinutes.remainder(60);
+    final seconds = duration.inSeconds.remainder(60);
+    return '${minutes.toString().padLeft(2, '0')} : ${seconds.toString().padLeft(2, '0')}';
   }
 }
