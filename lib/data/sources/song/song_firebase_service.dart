@@ -62,7 +62,7 @@ class SongFirebaseServiceImpl extends SongFirebaseService {
     var user = firebaseAuth.currentUser;
     String uId = user!.uid;
 
-    firebaseFirestore
+    QuerySnapshot favoriteSongs = await firebaseFirestore
         .collection('Users')
         .doc(uId)
         .collection('Favorites')
