@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:spotify_app/data/models/song/song.dart';
 import 'package:spotify_app/domain/entities/song/song.dart';
 
@@ -51,5 +52,11 @@ class SongFirebaseServiceImpl extends SongFirebaseService {
       print(e);
       return const Left('An error occured, please try again');
     }
+  }
+
+  @override
+  Future<Either> addOrRemoveFavoriteSongs() {
+    final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+    final FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
   }
 }
