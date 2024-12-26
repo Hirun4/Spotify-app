@@ -122,8 +122,22 @@ class SongPlayerPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(formatDuration(
-                      context.read<SongPlayerCubit>().songPosition))
+                      context.read<SongPlayerCubit>().songDuration))
                 ],
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Container(
+                height: 45,
+                width: 45,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: AppColors.primary,
+                ),
+                child: Icon(context.read<SongPlayerCubit>().audioPlayer.playing
+                    ? Icons.pause
+                    : Icons.play_arrow),
               )
             ],
           );
