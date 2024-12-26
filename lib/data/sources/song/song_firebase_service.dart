@@ -55,7 +55,7 @@ class SongFirebaseServiceImpl extends SongFirebaseService {
   }
 
   @override
-  Future<Either> addOrRemoveFavoriteSongs(String songId) {
+  Future<Either> addOrRemoveFavoriteSongs(String songId) async {
     final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
     final FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
 
@@ -68,5 +68,15 @@ class SongFirebaseServiceImpl extends SongFirebaseService {
         .collection('Favorites')
         .where('songId', isEqualTo: songId)
         .get();
+
+    if (favoriteSongs.docs.isNotEmpty) {
+      await favoriteSongs.docs.first.reference.delete();
+    } else {
+      await firebaseFirestore
+          .collection('Users')
+          .doc(uId)
+          .collection('Favorites')
+          .add({'songId': songId, 'addedDate': Timestamp.now()});
+    }
   }
 }
