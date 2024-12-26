@@ -95,7 +95,6 @@ class SongFirebaseServiceImpl extends SongFirebaseService {
       final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
       final FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
 
-      late bool isFavorite;
       var user = firebaseAuth.currentUser;
       String uId = user!.uid;
 
