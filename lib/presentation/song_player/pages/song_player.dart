@@ -128,16 +128,22 @@ class SongPlayerPage extends StatelessWidget {
               SizedBox(
                 height: 20,
               ),
-              Container(
-                height: 45,
-                width: 45,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: AppColors.primary,
+              GestureDetector(
+                onTap: () {
+                  context.read<SongPlayerCubit>().playOrPauseSong();
+                },
+                child: Container(
+                  height: 60,
+                  width: 60,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: AppColors.primary,
+                  ),
+                  child: Icon(
+                      context.read<SongPlayerCubit>().audioPlayer.playing
+                          ? Icons.pause
+                          : Icons.play_arrow),
                 ),
-                child: Icon(context.read<SongPlayerCubit>().audioPlayer.playing
-                    ? Icons.pause
-                    : Icons.play_arrow),
               )
             ],
           );
