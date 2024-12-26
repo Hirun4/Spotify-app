@@ -114,6 +114,13 @@ class SongPlayerPage extends StatelessWidget {
                     .inSeconds
                     .toDouble(),
                 onChanged: (value) {},
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [Text()],
               )
             ],
           );
@@ -121,5 +128,11 @@ class SongPlayerPage extends StatelessWidget {
         return Container();
       },
     );
+  }
+
+  String formatDuration(Duration duration) {
+    final minutes = duration.inMinutes.remainder(60);
+    final seconds = duration.inSeconds.remainder(60);
+    return '${minutes.toString().padLeft(2, '')} : ${seconds.toString().padLeft(2, '')}';
   }
 }
