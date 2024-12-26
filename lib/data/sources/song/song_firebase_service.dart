@@ -56,27 +56,35 @@ class SongFirebaseServiceImpl extends SongFirebaseService {
 
   @override
   Future<Either> addOrRemoveFavoriteSongs(String songId) async {
-    final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
-    final FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+    try {
+      final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+      final FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
 
-    var user = firebaseAuth.currentUser;
-    String uId = user!.uid;
+      late bool isFavorite;
+      var user = firebaseAuth.currentUser;
+      String uId = user!.uid;
 
-    QuerySnapshot favoriteSongs = await firebaseFirestore
-        .collection('Users')
-        .doc(uId)
-        .collection('Favorites')
-        .where('songId', isEqualTo: songId)
-        .get();
-
-    if (favoriteSongs.docs.isNotEmpty) {
-      await favoriteSongs.docs.first.reference.delete();
-    } else {
-      await firebaseFirestore
+      QuerySnapshot favoriteSongs = await firebaseFirestore
           .collection('Users')
           .doc(uId)
           .collection('Favorites')
-          .add({'songId': songId, 'addedDate': Timestamp.now()});
+          .where('songId', isEqualTo: songId)
+          .get();
+
+      if (favoriteSongs.docs.isNotEmpty) {
+        await favoriteSongs.docs.first.reference.delete();
+        isFavorite = false;
+      } else {
+        await firebaseFirestore
+            .collection('Users')
+            .doc(uId)
+            .collection('Favorites')
+            .add({'songId': songId, 'addedDate': Timestamp.now()});
+        isFavorite = true;
+      }
+      return Right(isFavorite);
+    } catch (e) {
+      return Left('An error occurred');
     }
   }
 }
