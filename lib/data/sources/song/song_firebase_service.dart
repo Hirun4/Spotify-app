@@ -52,6 +52,11 @@ class SongFirebaseServiceImpl extends SongFirebaseService {
 
       for (var element in data.docs) {
         var songModel = SongModel.fromJson(element.data());
+        bool isFavorite = await sl<IsFavoriteSongUseCase>()
+            .call(params: element.reference.id);
+        songModel.isFavorite = isFavorite;
+        songModel.songId = element.reference.id;
+
         songs.add(songModel.toEntity());
       }
 
