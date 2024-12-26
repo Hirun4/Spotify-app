@@ -4,15 +4,12 @@ import 'package:spotify_app/data/models/song/song.dart';
 import 'package:spotify_app/domain/entities/song/song.dart';
 
 abstract class SongFirebaseService {
-
   Future<Either> getNewsSongs();
   Future<Either> getPlayList();
-
+  Future<Either> addOrRemoveFavoriteSongs();
 }
 
 class SongFirebaseServiceImpl extends SongFirebaseService {
-
-
   @override
   Future<Either> getNewsSongs() async {
     try {
@@ -34,7 +31,7 @@ class SongFirebaseServiceImpl extends SongFirebaseService {
       return const Left('An error occured, please try again');
     }
   }
-  
+
   @override
   Future<Either> getPlayList() async {
     try {
