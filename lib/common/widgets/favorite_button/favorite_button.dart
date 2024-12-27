@@ -28,6 +28,21 @@ class FavoriteButton extends StatelessWidget {
               ),
             );
           }
+
+          if (state is FavoriteButtonUpdated) {
+            return IconButton(
+              onPressed: () {},
+              icon: Icon(
+                state.isFavorite
+                    ? Icons.favorite
+                    : Icons.favorite_outline_outlined,
+                size: 25,
+                color: AppColors.darkGrey,
+              ),
+            );
+          }
+
+          return Container();
         },
       ),
     );
