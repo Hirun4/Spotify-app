@@ -18,7 +18,11 @@ class FavoriteButton extends StatelessWidget {
         builder: (context, state) {
           if (state is FavoriteButtonInitial) {
             return IconButton(
-              onPressed: () {},
+              onPressed: () {
+                context
+                    .read<FavoriteButtonCubit>()
+                    .favoriteButtonUpdated(songEntity.songId);
+              },
               icon: Icon(
                 songEntity.isFavorite
                     ? Icons.favorite
