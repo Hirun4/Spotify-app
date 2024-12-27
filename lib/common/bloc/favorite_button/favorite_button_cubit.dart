@@ -11,9 +11,9 @@ class FavoriteButtonCubit extends Cubit<FavoriteButtonState> {
     var result =
         await sl<AddOrRemoveFavoriteSongUseCase>().call(params: songId);
 
-    result.fold((l) {}, (r) {
+    result.fold((l) {}, (isFavorite) {
       emit(
-        FavoriteButtonUpdated(),
+        FavoriteButtonUpdated(isFavorite: isFavorite),
       );
     });
   }
