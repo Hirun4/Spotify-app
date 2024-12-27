@@ -5,6 +5,7 @@ import 'package:spotify_app/domain/entities/song/song.dart';
 import 'package:spotify_app/presentation/song_player/bloc/song_player_cubit.dart';
 import 'package:spotify_app/presentation/song_player/bloc/song_player_state.dart';
 
+import '../../../common/widgets/favorite_button/favorite_button.dart';
 import '../../../core/configs/constants/app_urls.dart';
 import '../../../core/configs/theme/app_colors.dart';
 
@@ -81,13 +82,9 @@ class SongPlayerPage extends StatelessWidget {
             ),
           ],
         ),
-        IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.favorite_outline_outlined,
-              size: 35,
-              color: AppColors.darkGrey,
-            ))
+        FavoriteButton(
+          songEntity: songEntity,
+        ),
       ],
     );
   }
