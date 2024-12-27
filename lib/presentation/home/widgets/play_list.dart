@@ -125,7 +125,7 @@ class PlayList extends StatelessWidget {
                     ),
                     FavoriteButton(
                       songEntity: songs[index],
-                    )
+                    ),
                   ],
                 )
               ],
