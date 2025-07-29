@@ -5,7 +5,7 @@ class FirebaseTestData {
     try {
       final FirebaseFirestore firestore = FirebaseFirestore.instance;
 
-      // Sample songs data
+     
       List<Map<String, dynamic>> sampleSongs = [
         {
           'title': 'Blinding Lights',
@@ -212,14 +212,14 @@ class FirebaseTestData {
 
       final FirebaseFirestore firestore = FirebaseFirestore.instance;
 
-      // Try to read from Songs collection
+      
       final QuerySnapshot songsSnapshot =
           await firestore.collection('Songs').limit(1).get();
 
       print(
           '📦 Songs collection exists: ${songsSnapshot.docs.length} documents found');
 
-      // Try to read from Users collection
+     
       final QuerySnapshot usersSnapshot =
           await firestore.collection('Users').limit(1).get();
 
