@@ -6,6 +6,9 @@ import 'package:spotify_app/core/configs/theme/app_colors.dart';
 import 'package:spotify_app/core/helpers/firebase_test_data.dart';
 import 'package:spotify_app/presentation/home/widgets/news_songs.dart';
 import 'package:spotify_app/presentation/home/widgets/play_list.dart';
+import 'package:spotify_app/presentation/home/widgets/videos.dart';
+import 'package:spotify_app/presentation/home/widgets/artists.dart';
+import 'package:spotify_app/presentation/home/widgets/podcasts.dart';
 import 'package:spotify_app/presentation/profile/pages/profile.dart';
 
 import '../../../common/widgets/appbar/app_bar.dart';
@@ -51,13 +54,13 @@ class _HomePageState extends State<HomePage>
         onPressed: () async {
           print('🧪 Running Firebase tests...');
           await FirebaseTestData.checkFirestoreConnection();
-          await FirebaseTestData.addSampleSongs();
+          await FirebaseTestData.addAllSampleData();
 
           // Trigger a rebuild by calling setState
           setState(() {});
         },
-        child: Icon(Icons.bug_report),
-        tooltip: 'Test Firebase & Add Sample Data',
+        child: Icon(Icons.add_circle),
+        tooltip: 'Add All Sample Data (Songs, Videos, Artists, Podcasts)',
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -71,9 +74,9 @@ class _HomePageState extends State<HomePage>
                 controller: _tabController,
                 children: [
                   const NewsSongs(),
-                  Container(),
-                  Container(),
-                  Container()
+                  const VideosWidget(),
+                  const ArtistsWidget(),
+                  const PodcastsWidget(),
                 ],
               ),
             ),
