@@ -8,11 +8,14 @@ class NewsSongsCubit extends Cubit<NewsSongsState> {
   NewsSongsCubit() : super(NewsSongsLoading());
 
   Future<void> getNewsSongs() async {
+    print('🎵 NewsSongsCubit: Starting to get news songs...');
     var returnedSongs = await sl<GetNewsSongsUseCase>().call();
 
-    returnedSongs.fold((l) {
-      emit(NewsSongsLoadFailure());
+    returnedSongs.fold((error) {
+      print('❌ NewsSongsCubit: Error occurred - $error');
+      emit(NewsSongsLoadFailure(message: error.toString()));
     }, (data) {
+      print('✅ NewsSongsCubit: Successfully loaded ${data.length} songs');
       emit(NewsSongsLoaded(songs: data));
     });
   }

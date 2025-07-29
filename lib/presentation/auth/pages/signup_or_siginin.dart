@@ -8,8 +8,15 @@ import 'package:spotify_app/core/configs/assets/app_vectors.dart';
 import 'package:spotify_app/presentation/auth/pages/signin.dart';
 import 'package:spotify_app/presentation/auth/pages/signup.dart';
 
-class SignupOrSigninPage extends StatelessWidget {
+class SignupOrSigninPage extends StatefulWidget {
   const SignupOrSigninPage({super.key});
+
+  @override
+  State<SignupOrSigninPage> createState() => _SignupOrSigninPageState();
+}
+
+class _SignupOrSigninPageState extends State<SignupOrSigninPage> {
+  bool isSignInHovered = false;
 
   @override
   Widget build(BuildContext context) {
@@ -26,8 +33,9 @@ class SignupOrSigninPage extends StatelessWidget {
             child: SvgPicture.asset(AppVectors.bottomPattern),
           ),
           Align(
-              alignment: Alignment.bottomLeft,
-              child: Image.asset(AppImages.authBG)),
+            alignment: Alignment.bottomLeft,
+            child: Image.asset(AppImages.authBG),
+          ),
           Align(
             alignment: Alignment.center,
             child: Padding(
@@ -37,66 +45,85 @@ class SignupOrSigninPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   SvgPicture.asset(AppVectors.logo),
-                  const SizedBox(
-                    height: 55,
-                  ),
+                  const SizedBox(height: 55),
                   const Text(
                     'Enjoy Listening To Music',
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 26),
                   ),
-                  const SizedBox(
-                    height: 21,
-                  ),
+                  const SizedBox(height: 21),
                   const Text(
                     'Spotify is a proprietary Swedish audio streaming and media services provider',
                     style: TextStyle(
-                        fontWeight: FontWeight.w700,
-                        fontSize: 14,
-                        color: Color.fromARGB(255, 117, 116, 116)),
+                      fontWeight: FontWeight.w700,
+                      fontSize: 14,
+                      color: Color.fromARGB(255, 117, 116, 116),
+                    ),
                     textAlign: TextAlign.center,
                   ),
-                  const SizedBox(
-                    height: 30,
-                  ),
+                  const SizedBox(height: 30),
                   Row(
                     children: [
                       Expanded(
                         flex: 1,
-                        child: BasicAppButton(
+                        child: MouseRegion(
+                          cursor: SystemMouseCursors.click,
+                          child: BasicAppButton(
                             onPressed: () {
                               Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (BuildContext context) =>
-                                          SignupPage()));
+                                context,
+                                MaterialPageRoute(
+                                  builder: (BuildContext context) => SignupPage(),
+                                ),
+                              );
                             },
-                            title: 'Register'),
+                            title: 'Register',
+                            height: 50,
+                          ),
+                        ),
                       ),
-                      const SizedBox(
-                        width: 20,
-                      ),
+                      const SizedBox(width: 20),
                       Expanded(
                         flex: 1,
-                        child: TextButton(
+                        child: MouseRegion(
+                          cursor: SystemMouseCursors.click,
+                          onEnter: (_) => setState(() => isSignInHovered = true),
+                          onExit: (_) => setState(() => isSignInHovered = false),
+                          child: TextButton(
                             onPressed: () {
                               Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (BuildContext context) =>
-                                          SigninPage()));
+                                context,
+                                MaterialPageRoute(
+                                  builder: (BuildContext context) => SigninPage(),
+                                ),
+                              );
                             },
+                            style: ButtonStyle(
+                              minimumSize: MaterialStateProperty.all(
+                                const Size.fromHeight(50),
+                              ),
+                              backgroundColor: MaterialStateProperty.resolveWith<Color>(
+                                    (states) => isSignInHovered
+                                    ? Theme.of(context).primaryColor.withOpacity(0.1)
+                                    : Colors.transparent,
+                              ),
+                              overlayColor: MaterialStateProperty.all(Colors.transparent),
+                              padding: MaterialStateProperty.all(EdgeInsets.zero),
+                              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                              splashFactory: NoSplash.splashFactory,
+                            ),
                             child: Text(
                               'Sign in',
                               style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16,
-                                  color: context.isDarkMode
-                                      ? Colors.white
-                                      : Colors.black),
-                            )),
-                      )
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16,
+                                color: context.isDarkMode ? Colors.white : Colors.black,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
                     ],
-                  )
+                  ),
                 ],
               ),
             ),

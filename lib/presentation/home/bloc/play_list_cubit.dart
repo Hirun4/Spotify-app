@@ -7,11 +7,14 @@ class PlayListCubit extends Cubit<PlayListState> {
   PlayListCubit() : super(PlayListLoading());
 
   Future<void> getPlayList() async {
+    print('🎵 PlayListCubit: Starting to get playlist...');
     var returnedSongs = await sl<GetPlayListUseCase>().call();
 
-    returnedSongs.fold((l) {
-      emit(PlayListLoadFailure());
+    returnedSongs.fold((error) {
+      print('❌ PlayListCubit: Error occurred - $error');
+      emit(PlayListLoadFailure(message: error.toString()));
     }, (data) {
+      print('✅ PlayListCubit: Successfully loaded ${data.length} songs');
       emit(PlayListLoaded(songs: data));
     });
   }

@@ -20,10 +20,14 @@ class AuthFirebaseServiceImpl extends AuthFirebaseService {
       var data = await FirebaseAuth.instance.createUserWithEmailAndPassword(
           email: createUserReq.email, password: createUserReq.password);
 
-      FirebaseFirestore.instance
+      // Update the user's display name
+      await data.user?.updateDisplayName(createUserReq.fullName);
+
+      // Save user data to Firestore
+      await FirebaseFirestore.instance
           .collection('Users')
           .doc(data.user?.uid)
-          .set({'name': data.user?.displayName, 'email': data.user?.email});
+          .set({'name': createUserReq.fullName, 'email': createUserReq.email});
 
       return const Right('Signup was successful ');
     } on FirebaseAuthException catch (e) {
@@ -58,24 +62,45 @@ class AuthFirebaseServiceImpl extends AuthFirebaseService {
       return Left(message);
     }
   }
-  
+
   @override
   Future<Either> getUser() async {
-    try{
-    FirebaseAuth firebaseAuth = FirebaseAuth.instance;
-    FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+    try {
+      print('🔍 Starting to get user profile...');
+      FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+      FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
 
-    var user = await firebaseFirestore.collection('Users').doc(
-      firebaseAuth.currentUser?.uid
-    ).get();
+      var currentUser = firebaseAuth.currentUser;
+      if (currentUser == null) {
+        print('❌ No current user found');
+        return const Left('User not authenticated');
+      }
 
-    UserModel userModel = UserModel.fromJson(user.data()!);
-    userModel.imageURL = firebaseAuth.currentUser?.photoURL ?? AppURLs.defaultImage;
-    UserEntity userEntity = userModel.toEntity();
-    return Right(userEntity);
-    }catch (e) {
+      print('👤 Current user UID: ${currentUser.uid}');
+
+      var userDoc = await firebaseFirestore
+          .collection('Users')
+          .doc(currentUser.uid)
+          .get();
+
+      if (!userDoc.exists) {
+        print('❌ User document does not exist in Firestore');
+        return const Left('User profile not found');
+      }
+
+      print('📄 User document data: ${userDoc.data()}');
+
+      UserModel userModel = UserModel.fromJson(userDoc.data()!);
+      userModel.imageURL = currentUser.photoURL ?? AppURLs.defaultImage;
+
+      print('✅ User model created: ${userModel.fullName}, ${userModel.email}');
+
+      UserEntity userEntity = userModel.toEntity();
+      return Right(userEntity);
+    } catch (e) {
+      print('❌ Error getting user profile: $e');
+      print('📍 Stack trace: ${StackTrace.current}');
       return const Left('An error occurred');
     }
-
   }
 }

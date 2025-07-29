@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:spotify_app/common/helpers/is_dark_mode.dart';
 import 'package:spotify_app/core/configs/assets/app_images.dart';
 import 'package:spotify_app/core/configs/theme/app_colors.dart';
+import 'package:spotify_app/core/helpers/firebase_test_data.dart';
 import 'package:spotify_app/presentation/home/widgets/news_songs.dart';
 import 'package:spotify_app/presentation/home/widgets/play_list.dart';
 import 'package:spotify_app/presentation/profile/pages/profile.dart';
@@ -33,21 +34,30 @@ class _HomePageState extends State<HomePage>
       appBar: BasicAppbar(
         hideBack: true,
         action: IconButton(
-          onPressed: (){
-            Navigator.push(
-              context, 
-              MaterialPageRoute(builder: (BuildContext context) => const ProfilePage())
-            );
-          }, 
-          icon: const Icon(
-          Icons.person
-          )
-        ),
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (BuildContext context) => const ProfilePage()));
+            },
+            icon: const Icon(Icons.person)),
         title: SvgPicture.asset(
           AppVectors.logo,
           height: 40,
           width: 40,
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () async {
+          print('🧪 Running Firebase tests...');
+          await FirebaseTestData.checkFirestoreConnection();
+          await FirebaseTestData.addSampleSongs();
+
+          // Trigger a rebuild by calling setState
+          setState(() {});
+        },
+        child: Icon(Icons.bug_report),
+        tooltip: 'Test Firebase & Add Sample Data',
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -60,7 +70,7 @@ class _HomePageState extends State<HomePage>
               child: TabBarView(
                 controller: _tabController,
                 children: [
-                  const  NewsSongs(),
+                  const NewsSongs(),
                   Container(),
                   Container(),
                   Container()
