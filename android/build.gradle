@@ -2,7 +2,17 @@ allprojects {
     repositories {
         google()
         mavenCentral()
-        
+    }
+}
+
+gradle.projectsLoaded {
+    gradle.rootProject {
+        buildscript {
+            repositories {
+                google()
+                mavenCentral()
+            }
+        }
     }
 }
 
@@ -17,3 +27,13 @@ subprojects {
 tasks.register("clean", Delete) {
     delete rootProject.buildDir
 }
+
+tasks.withType(JavaCompile) {
+    sourceCompatibility = '17'
+    targetCompatibility = '17'
+}
+
+//tasks.withType(org.gradle.api.tasks.compile.JavaCompile) {
+//    options.fork = true
+//    options.forkOptions.executable = 'E:\\Program Files\\JAVA\\bin'
+//}

@@ -36,9 +36,35 @@ class NewsSongs extends StatelessWidget {
                 debugPrint(
                     "State is NewsSongsLoaded with ${state.songs.length} songs");
                 return _songs(state.songs);
+              } else if (state is NewsSongsLoadFailure) {
+                debugPrint("State is NewsSongsLoadFailure: ${state.message}");
+                return Container(
+                  alignment: Alignment.center,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(Icons.error_outline, size: 48, color: Colors.red),
+                      SizedBox(height: 8),
+                      Text(
+                        'Failed to load songs',
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.w500),
+                      ),
+                      SizedBox(height: 4),
+                      Text(
+                        state.message,
+                        style: TextStyle(fontSize: 12, color: Colors.grey),
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
+                  ),
+                );
               } else {
                 debugPrint("State is unhandled: $state");
-                return Container();
+                return Container(
+                  alignment: Alignment.center,
+                  child: Text('Unknown state'),
+                );
               }
             },
           )),

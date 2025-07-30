@@ -55,6 +55,30 @@ class PlayList extends StatelessWidget {
                 ),
               );
             }
+            if (state is PlayListLoadFailure) {
+              return Container(
+                alignment: Alignment.center,
+                padding: const EdgeInsets.all(20),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.error_outline, size: 48, color: Colors.red),
+                    SizedBox(height: 8),
+                    Text(
+                      'Failed to load playlist',
+                      style:
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                    ),
+                    SizedBox(height: 4),
+                    Text(
+                      state.message,
+                      style: TextStyle(fontSize: 12, color: Colors.grey),
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
+                ),
+              );
+            }
 
             return Container();
           },

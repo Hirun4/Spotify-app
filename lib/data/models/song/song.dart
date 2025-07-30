@@ -21,8 +21,33 @@ class SongModel {
   SongModel.fromJson(Map<String, dynamic> data) {
     title = data['title'];
     artist = data['artist'];
-    duration = data['duration'];
+
+    // Handle duration conversion from string format "mm:ss" to total seconds
+    if (data['duration'] is String) {
+      duration = _parseDurationFromString(data['duration']);
+    } else if (data['duration'] is num) {
+      duration = data['duration'];
+    } else {
+      duration = 0; // Default fallback
+    }
+
     releaseDate = data['releaseDate'];
+  }
+
+  // Helper method to convert "mm:ss" format to total seconds
+  static num _parseDurationFromString(String durationStr) {
+    try {
+      final parts = durationStr.split(':');
+      if (parts.length == 2) {
+        final minutes = int.parse(parts[0]);
+        final seconds = int.parse(parts[1]);
+        return (minutes * 60) + seconds;
+      }
+      return 0;
+    } catch (e) {
+      print('⚠️ Error parsing duration "$durationStr": $e');
+      return 0;
+    }
   }
 }
 

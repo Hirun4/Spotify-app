@@ -20,7 +20,7 @@ class FavoriteButton extends StatelessWidget {
           if (state is FavoriteButtonInitial) {
             return IconButton(
               onPressed: () async {
-                await context
+                context
                     .read<FavoriteButtonCubit>()
                     .favoriteButtonUpdated(songEntity.songId);
                 if (function != null) {
